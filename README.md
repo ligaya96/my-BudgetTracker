@@ -11,7 +11,7 @@ this App will allow the user to track their budget online as well as offline. Wh
 </ul>
 
 # Heroku Link 
-<a href="">Visit My Budget Tracker!</a>
+<a href="https://infinite-ridge-91935.herokuapp.com/">Visit My Budget Tracker!</a>
 
 # ScreenShot 
-<img src="" alt="BudgetTracker">
+<img src="./img/budgettracker.png" alt="BudgetTracker">
