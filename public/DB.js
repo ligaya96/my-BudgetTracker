@@ -2,7 +2,7 @@ const { response } = require("express");
 
 //database  creating new DB
 let DB;
-const request = indexedDB.open("tracker", 1 )
+const request = indexedDB.open("budget", 1 )
 
 request.onupgradeneeded = function(event) {
     const DB = event.target.result;

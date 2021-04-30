@@ -9,6 +9,8 @@
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="styles.css">
+ <!-- almost forgot the manifest link  -->
+  <link rel="manifest" href="/manifest.webmanifest">
 
   <title>Budget Tracker</title>
 </head>
@@ -44,12 +46,17 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <script src="index.js"></script>
   <script>
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("service-worker.js", { scope: "/" })
-    .then(() => console.log("Service Worker registered successfully."))
-     .catch(error => console.log("Service Worker registration failed:", error));
-  }
-
-  </script>
+   if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("/service-worker.js", { scope: "/" })
+          .then(reg => {
+            console.log("Your file has been found!", reg);
+          })
+          .catch(registrationError => {
+                console.log("Registration failed: ", registrationError);
+          });
+        });
+      }
+</script>
 </body>
 </html>
