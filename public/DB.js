@@ -1,17 +1,17 @@
 const { response } = require("express");
 
 //database  creating new DB
-let DB;
+let db;
 const request = indexedDB.open("budget", 1 )
 
 request.onupgradeneeded = function(event) {
-    const DB = event.target.result;
+    const db = event.target.result;
     // Creating an Table to set AutoIncrement true
-    DB.createObject("newData", { autoIncrement : true});
+    db.createObject("newData", { autoIncrement : true});
 };
 request.onsuccess = function(event) {
      //checking if Online
-    DB = event.target.result;
+    db = event.target.result;
     //If online Check database??
    if (navigator.onLine) {
        checkDatabase();
@@ -26,7 +26,7 @@ request.onerror = function(event){
 //Save data to  the DB
 function saveRecord(record) {
     //Create a Transcation with DB
-    const transaction = DB.transaction(["newData"], "readwrite");
+    const transaction = db.transaction(["newData"], "readwrite");
     const store = transaction.objectStore("newData");
     //make sure to add
     store.add(record);
@@ -34,7 +34,7 @@ function saveRecord(record) {
 //checking database
 function checkDatabase() {
 // open a transcation
-const transaction = DB.transaction(["newData"], "readwrite");
+const transaction = db.transaction(["newData"], "readwrite");
 const store = transaction.objectStore("newData");
 const getAll = store.getAll();
 //get all call
@@ -49,7 +49,7 @@ getAll.onsuccess =  function(){
             },
         }).then(response => response.json())
         .then((data) => {
-            const transaction = DB.transaction(["newData"], "readwrite");
+            const transaction = db.transaction(["newData"], "readwrite");
             const store = transaction.objectStore("newData")
             //Clears all 
             store.clear();

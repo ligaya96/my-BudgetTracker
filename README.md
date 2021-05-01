@@ -1,7 +1,7 @@
 # my-BudgetTracker
 
 # Description 
-this App will allow the user to track their budget online as well as offline. When adding transcation offline, budget will then populate online. 
+This App will allow the user to track their budget online as well as offline. When adding transcation offline, budget will then populate online. 
 
 # Installation 
 <ul> 
